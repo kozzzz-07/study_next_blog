@@ -6,7 +6,6 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { Input } from "../../../../components/ui/input";
 import SearchBox from "../post/SearchBox";
 
 export default function PublicHeader() {
