@@ -1,9 +1,10 @@
-import { getPost } from "@/app/(blog)/_prisma/post";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { ja } from "date-fns/locale";
 import { notFound } from "next/navigation";
 import { format } from "date-fns";
 import Image from "next/image";
+import { getOwnPost } from "@/app/(blog)/_prisma/ownPost";
+import { auth } from "@/auth";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
@@ -13,9 +14,14 @@ type Params = {
   params: Promise<{ id: string }>;
 };
 
-export default async function PostPage({ params }: Params) {
+export default async function ShowPage({ params }: Params) {
+  const session = await auth();
+  const userId = session?.user?.id;
+  if (!session?.user?.email || !userId) {
+    throw new Error("不正なリクエストです");
+  }
   const { id } = await params;
-  const post = await getPost(id);
+  const post = await getOwnPost(userId, id);
 
   if (!post) {
     notFound();
