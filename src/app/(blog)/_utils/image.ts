@@ -10,6 +10,7 @@ export async function saveImage(file: File): Promise<string | null> {
     await writeFile(filePath, buffer);
     return `/images/${fileName}`;
   } catch (error) {
+    console.error(error);
     return null;
   }
 }

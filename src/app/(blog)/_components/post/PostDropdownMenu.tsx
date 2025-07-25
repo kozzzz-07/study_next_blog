@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import { useState } from "react";
+import DeletePostDialog from "./DeletePostDialog";
 
 export default function PostDropdownMenu({ postId }: { postId: string }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -50,13 +51,13 @@ export default function PostDropdownMenu({ postId }: { postId: string }) {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      {/* {showDeleteDialog && (
+      {showDeleteDialog && (
         <DeletePostDialog
           postId={postId}
           isOpen={showDeleteDialog}
           onOpenChange={handleDeleteDialogChange}
         />
-      )} */}
+      )}
     </>
   );
 }
