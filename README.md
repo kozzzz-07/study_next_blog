@@ -16,6 +16,11 @@
 3. 必要に応じてクライアント再生成
    1. `npx prisma generate --schema prisma/prod/schema.prisma`
 
+- storageを利用する場合
+1. NEXT_PUBLIC_USE_SUPABASE_STORAGEをtureにする
+2. SUPABASE_DOMEINを設定する
+3. supabase側のストレージの設定をする
+
 ## prisma
 - マイグレーション（テーブル作成）
   - `npx prisma migrate dev --name [name]`
